@@ -36,7 +36,7 @@ As copying is done within the kernel space, **sendfile** is more efficient than 
 Let's try out example in Java
 ---------------------------
 
-Compilig a java class is as simple as:
+Compiling a java class is as simple as:
 ```shell
 javac JioChannel.java
 ```
@@ -51,7 +51,7 @@ Now let's execute zero file copy where **FileChannel.transferTo()** is used to c
 ```shell
 time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 2
 ```
-Again ss copying is done within the kernel space, **FileChannel.transferTo()** is more efficient than the combination of read and write, which would require transferring data to and from user space.
+Again as copying is done within the kernel space, **FileChannel.transferTo()** is more efficient than the combination of read and write, which would require transferring data to and from user space.
 
 
 
