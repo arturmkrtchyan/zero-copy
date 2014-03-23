@@ -24,11 +24,23 @@ gcc -Wall -W -Werror fcopy.c -o fcopy
 Now let's execute non-zero file copy where 8K buffer is used to read and write data.
 ```shell
 time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 1
+
+-----------------------
+real  0m13.528s 
+user  0m0.080s 
+sys   0m2.160s
+-----------------------
 ```
 
 Now let's execute zero file copy where **sendfile** is used to copy data between one file descriptor and another. 
 ```shell
 time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 2
+
+-----------------------
+real  0m12.725s
+user  0m0.000s
+sys   0m0.880s
+-----------------------
 ```
 As copying is done within the kernel space, **sendfile** is more efficient than the combination of read and write, which would require transferring data to and from user space.
 
@@ -50,49 +62,13 @@ time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 1
 Now let's execute zero file copy where **FileChannel.transferTo()** is used to copy data between one file channel and another.
 ```shell
 time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 2
+
+-----------------------
+real  0m13.721s 
+user  0m0.228s 
+sys   0m1.508s
+-----------------------
 ```
 Again as copying is done within the kernel space, **FileChannel.transferTo()** is more efficient than the combination of read and write, which would require transferring data to and from user space.
 
-
-
-
-
-
-ToDo add results
-
-artur@artur-laptop:~/fcopy/zero-copy$ time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 2
-
-real	0m13.721s
-user	0m0.228s
-sys	0m1.508s
-artur@artur-laptop:~/fcopy/zero-copy$ time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 2
-
-real	0m13.477s
-user	0m0.224s
-sys	0m1.512s
-artur@artur-laptop:~/fcopy/zero-copy$ time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 1
-
-real	0m13.528s
-user	0m0.080s
-sys	0m2.160s
-artur@artur-laptop:~/fcopy/zero-copy$ time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 1
-
-real	0m13.632s
-user	0m0.080s
-sys	0m2.152s
-artur@artur-laptop:~/fcopy/zero-copy$ time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 2
-
-real	0m12.111s
-user	0m0.004s
-sys	0m0.956s
-artur@artur-laptop:~/fcopy/zero-copy$ time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 2
-
-real	0m12.725s
-user	0m0.000s
-sys	0m0.880s
-artur@artur-laptop:~/fcopy/zero-copy$ time ./fcopy /tmp/rbigfile.dat /tmp/wbigfile.dat 2
-
-real	0m12.433s
-user	0m0.000s
-sys	0m0.872s
 
