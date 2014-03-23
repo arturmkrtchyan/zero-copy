@@ -56,6 +56,12 @@ javac JioChannel.java
 Now let's execute non-zero file copy where 8K buffer is used to read and write data.
 ```shell
 time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 1
+
+-----------------------
+real  0m14.445s
+user  0m0.364s
+sys   0m1.956s
+-----------------------
 ```
 
 
