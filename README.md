@@ -1,7 +1,7 @@
 zero-copy
 =========
 
-Zero copy lets you avoid redundant data copies between intermediate buffers and reduces the number of context switches between user space and kernel space. Ideal Zero copy (**zero cpu copy**) is possible when your hardware (disk drive, network card, graphic card, sound card) supports **DMA** (Direct Memory Acess).
+Zero copy lets you avoid redundant data copies between intermediate buffers and reduces the number of context switches between user-space and kernel-space. Ideal Zero copy (**zero cpu copy**) is possible when your hardware (disk drive, network card, graphic card, sound card) supports **DMA** (Direct Memory Acess).
 
 Example below demonstrates zero and non-zero file copy in Java and C.
 
