@@ -81,4 +81,4 @@ Again as copying is done within the kernel space, **FileChannel.transferTo()** i
 
 Conclusion
 ---------------------------
-ToDO
+You have seen demonstration of performance advantages of using **sendfile** and **transferTo()** compared to reading from one channel and writing the same data to another. Frameworks like netty, grizzly, kafka and others rely on zero-copy to have better throughput, lower latency.
