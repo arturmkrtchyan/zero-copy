@@ -70,8 +70,8 @@ Now let's execute zero file copy where **FileChannel.transferTo()** is used to c
 time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 2
 
 -----------------------
-real	0m15.473s
-user	0m0.124s
+real  0m15.473s
+user  0m0.124s
 sys   0m1.516s
 -----------------------
 ```
