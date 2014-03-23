@@ -1,9 +1,10 @@
 zero-copy
 =========
 
-Simple zero and non-zero file copy example in Java and C.
+Zero copy lets you avoid redundant data copies between intermediate buffers and reduces the number of context switches between user space and kernel space. Ideal Zero copy (**zero cpu copy**) is possible when your hardware (disk drive, network card, graphic card, sound card) supports **DMA** (Direct Memory Acess).
 
-Zero copy lets you avoid redundant data copies between intermediate buffers and reduces the number of context switches between user space and kernel space.
+Example below demonstrates zero and non-zero file copy in Java and C.
+
 
 Let's try out example in C
 ---------------------------
@@ -78,3 +79,6 @@ sys   0m1.516s
 Again as copying is done within the kernel space, **FileChannel.transferTo()** is more efficient than the combination of read and write, which would require transferring data to and from user space.
 
 
+Conclusion
+---------------------------
+ToDO
