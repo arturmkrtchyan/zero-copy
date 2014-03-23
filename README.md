@@ -70,9 +70,9 @@ Now let's execute zero file copy where **FileChannel.transferTo()** is used to c
 time java JioChannel /tmp/rbigfile.dat /tmp/wbigfile.dat 2
 
 -----------------------
-real  0m13.721s 
-user  0m0.228s 
-sys   0m1.508s
+real	0m15.473s
+user	0m0.124s
+sys   0m1.516s
 -----------------------
 ```
 Again as copying is done within the kernel space, **FileChannel.transferTo()** is more efficient than the combination of read and write, which would require transferring data to and from user space.
