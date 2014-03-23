@@ -78,6 +78,10 @@ sys   0m1.516s
 ```
 Again as copying is done within the kernel space, **FileChannel.transferTo()** is more efficient than the combination of read and write, which would require transferring data to and from user space.
 
+###real vs user vs sys
+**real** - elapsed "wall clock" time, like using a stop watch. It includes time slices used by other processes and time the process spends blocked.
+**user** - amount of CPU time spent in user-space code (outside the kernel-space) within the process.
+**sys** - amount of CPU time spent in the kernel-space within the process.
 
 Conclusion
 ---------------------------
