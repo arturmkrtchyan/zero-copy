@@ -49,6 +49,9 @@ void zero_copy(const char *src_path, const char *dst_path)
     exit(1);
   }
 
+  // Sync to avoid dirty memory
+  fdatasync(dst);
+
   close(dst);
   close(src);
 }
